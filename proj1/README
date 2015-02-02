@@ -3,7 +3,7 @@ Tianyang Chen
 tic27@pitt.edu
 1/23/2015
 
-Part1
+<b>Part1</b>
 The first part of the project doesn't have any error handlings on user input.
 The acceptable inputs are: 
 	yes
@@ -11,7 +11,8 @@ The acceptable inputs are:
 	paper
 	scissors
 All other inputs will cause the program to exit.
-Part 2
+
+<b>Part 2</b>
 ID3 tag editor
 Usage: 
 -h --help Display this usage information.
