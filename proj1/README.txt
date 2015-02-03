@@ -23,8 +23,6 @@ Usage:
 -track [arg] Modify the track.
 
 The program will print the tag if there is one when there is no options provided.
-<<<<<<< HEAD
+
 Known bugs: This program assumes the user use quotes on the arguments with spaces.
-=======
-Know bugs: if there are more than one arguments but no options, the program won't print the tags by default.
->>>>>>> origin/master
+
