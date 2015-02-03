@@ -15,12 +15,16 @@ All other inputs will cause the program to exit.
 <b>Part 2</b>
 ID3 tag editor
 Usage: 
--h --help Display this usage information.
--t --title [arg] Modify title of the mp3 file.
--a --artist [arg] Modify the artist.
--l --album [arg] Modify the album.
--c --comment [arg] Modify the comment.
--k --track [arg] Modify the track.
+-help Display this usage information.
+-title [arg] Modify title of the mp3 file.
+-artist [arg] Modify the artist.
+-album [arg] Modify the album.
+-comment [arg] Modify the comment.
+-track [arg] Modify the track.
 
 The program will print the tag if there is one when there is no options provided.
+<<<<<<< HEAD
+Known bugs: This program assumes the user use quotes on the arguments with spaces.
+=======
 Know bugs: if there are more than one arguments but no options, the program won't print the tags by default.
+>>>>>>> origin/master
