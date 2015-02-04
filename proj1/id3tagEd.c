@@ -26,14 +26,14 @@ int readTag(FILE* mp3_file,struct song_tag* tag){//read tags to a struct
 }
 void printTag(struct song_tag* tag){//print the tag
 	char buffer[31]={0};//temp array for printing non-null terminated strings
-	strncpy(buffer,tag->title,30);
-	printf("Title: %s\n",buffer);strncpy(buffer,tag->artist,30);
-	printf("Artist: %s\n",buffer);strncpy(buffer,tag->album,30);
-	printf("Album: %s\n",buffer);strncpy(buffer,tag->year,4);
-	printf("Year: %s\n",buffer);strncpy(buffer,tag->comment,28);
+	strncpy(buffer,tag->title,30);buffer[30]=0x00;
+	printf("Title: %s\n",buffer);strncpy(buffer,tag->artist,30);buffer[30]=0x00;
+	printf("Artist: %s\n",buffer);strncpy(buffer,tag->album,30);buffer[30]=0x00;
+	printf("Album: %s\n",buffer);strncpy(buffer,tag->year,4);buffer[4]=0x00;
+	printf("Year: %s\n",buffer);strncpy(buffer,tag->comment,28);buffer[28]=0x00;
 	printf("Comments: %s\n",buffer);
 	printf("Track number is %d\n",*tag->track_num);
-	printf("Genre is %d\n",*tag->genre);
+	printf("Genre is %X\n",*tag->genre);
 }
 void appendTag(FILE* mp3_file,struct song_tag* tag){// append a tag to the end
 	fwrite(tag,128,1,mp3_file);
@@ -101,45 +101,45 @@ int main(int argc, char * argv[]){
 	for(arg_index=2;arg_index<argc;arg_index++)
 	{
 		if(!strncmp("-title",argv[arg_index],6)){//-title is detected
-				printf("title\n");
+				printf("title has been modified\n");
 				strncpy(newtag.title,argv[++arg_index],30);
 				if(has_tag){
 					modifyTag(mp3_file,-128+3,newtag.title,30);
 				}				
 		}	
 		else if(!strncmp("-artist",argv[arg_index],7)){//-artist is detected
-				printf("artist\n");
+				printf("artist has been modified\n");
 				strncpy(newtag.artist,argv[++arg_index],30);
 				if(has_tag){
 					modifyTag(mp3_file,-128+33,newtag.artist,30);
 				}
 		}
 		else if(!strncmp("-album",argv[arg_index],6)){//-album is detected
-				printf("album\n");
+				printf("album has been modified\n");
 				strncpy(newtag.album,argv[++arg_index],30);
 				if(has_tag){	
 					modifyTag(mp3_file,-128+63,newtag.album,30);
 				}
 		}
 		else if(!strncmp("-year",argv[arg_index],5)){//-year is detected
-				printf("year\n");
+				printf("year has been modified\n");
 				strncpy(newtag.year,argv[++arg_index],4);
 				if(has_tag){
 					modifyTag(mp3_file,-128+93,newtag.year,4);
 				}
 		}
 		else if(!strncmp("-comment",argv[arg_index],8)){//-comment is detected
-				printf("comment\n");
+				printf("comment has been modified\n");
 				strncpy(newtag.comment,argv[++arg_index],28);
-				printf("comment is changed into %s\n",newtag.comment);
+				//printf("comment is changed into %s\n",newtag.comment);
 				if(has_tag){
 					modifyTag(mp3_file,-128+97,newtag.comment,28);
 				}	
 		}
 		else if(!strncmp("-track",argv[arg_index],6)){//-track is detected
-				
+				printf("track number has been modified\n");
 				newtag.track_num[0]=(char)atoi(argv[++arg_index]);
-				printf("track has been changed into %d\n",newtag.track_num);
+				//printf("track has been changed into %d\n",*newtag.track_num);
 				if(has_tag){
 					modifyTag(mp3_file,-128+126,newtag.track_num,1);
 				}
