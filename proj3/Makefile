@@ -1,3 +1,4 @@
-mymalloc: mymalloc.c
-	clear
-	gcc mymalloc.c -m32 -g -o mymalloc
+all: driver
+
+driver: mymalloc.c mallocdrv.c
+	gcc mymalloc.c mallocdrv.c -g -o driver -m32
